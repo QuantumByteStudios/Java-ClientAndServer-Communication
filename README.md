@@ -1,1 +1,1 @@
-<h1 align="center">Java-Console-Chat-Application</h1>
+<h1 align="center">Java-ClientAndServer-Communication</h1>
