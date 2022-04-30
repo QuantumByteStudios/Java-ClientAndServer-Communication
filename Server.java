@@ -1,5 +1,8 @@
 import java.net.*;
 import java.util.Scanner;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+import javax.swing.text.Utilities;
 import java.io.*;
 
 public class Server {
@@ -40,6 +43,24 @@ public class Server {
           System.out.println(
               currentConsole.BLUE + "Client Message: " + currentConsole.RESET + currentConsole.WHITE_BOLD + line
                   + currentConsole.RESET);
+
+          // Check For System Invokes
+          utilities serverInstance = new utilities();
+          switch (line) {
+            case "/system dir":
+              serverInstance.systemInvoke("dir");
+              break;
+          }
+
+          // Write to logs
+          DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+          LocalDateTime now = LocalDateTime.now();
+          try {
+            PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("logs.txt", true)));
+            out.println(dtf.format(now) + "    " + line);
+            out.close();
+          } catch (IOException e) {
+          }
 
         } catch (IOException i) {
           System.out.println(i);
