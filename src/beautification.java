@@ -3,7 +3,7 @@ public class beautification {
     for (int i = 0; i < text.length(); i++) {
       char printIt = text.charAt(i);
       System.out.print(printIt);
-      utilities.sleep(100);
+      utilities.sleep(50);
     }
   }
 }

@@ -22,10 +22,11 @@ public class Server {
       ConsoleColors currentConsole = new ConsoleColors();
 
       server = new ServerSocket(port);
-      serverBeautification.delayTextEffect(currentConsole.YELLOW + "Server started" + currentConsole.RESET + "\n");
+      serverBeautification.delayTextEffect(
+          currentConsole.YELLOW + "Server started at Port: " + port + currentConsole.RESET + "\n");
 
       serverBeautification
-          .delayTextEffect(currentConsole.YELLOW + "Waiting for a client ..." + currentConsole.RESET + "\n");
+          .delayTextEffect(currentConsole.YELLOW + "Waiting for client..." + currentConsole.RESET + "\n");
 
       socket = server.accept();
       serverBeautification.delayTextEffect(currentConsole.GREEN + "Client Connected.." + currentConsole.RESET + "\n");
@@ -78,6 +79,9 @@ public class Server {
 
   public static void main(String args[]) {
 
+    // Gets Port Number Form Argument
+    portNumber = Integer.parseInt(args[0]);
+
     // Creating Basic Objects
     utilities serverInstance = new utilities();
     // Objects End
@@ -87,7 +91,7 @@ public class Server {
     // Initial Methods Invoke End
 
     // Server Object Creation
-    Server server = new Server(5000);
+    Server server = new Server(portNumber);
 
   }
 }

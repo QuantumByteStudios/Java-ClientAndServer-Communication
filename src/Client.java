@@ -17,7 +17,10 @@ public class Client {
     // establish a connection
     try {
       socket = new Socket(address, port);
-      clientBeautification.delayTextEffect(clientConsoleColors.GREEN + "Connected" + clientConsoleColors.RESET + "\n");
+      clientBeautification
+          .delayTextEffect(
+              clientConsoleColors.GREEN + "Connected IP: " + address + "Port: " + port + clientConsoleColors.RESET
+                  + "\n");
 
       // takes input from terminal
       input = new DataInputStream(System.in);
@@ -56,6 +59,8 @@ public class Client {
 
   public static void main(String args[]) {
 
+    String ipAddress = args[0];
+    int portNumber = Integer.parseInt(args[1]);
     // Creating Basic Objects
     utilities serverInstance = new utilities();
     // Objects End
@@ -65,6 +70,6 @@ public class Client {
     // Initial Methods Invoke End
 
     // Client Object Creation
-    Client client = new Client("localhost", 5000);
+    Client client = new Client(ipAddress, portNumber);
   }
 }

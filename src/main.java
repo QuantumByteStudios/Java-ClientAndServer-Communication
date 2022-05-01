@@ -47,12 +47,34 @@ public class main {
     System.out.print("\nHey, " + colorConsole.RED + userName + colorConsole.RESET
         + " What You Want To Execute: \n--> 1) Server\n--> 2) Client\n\nYour Input: ");
     int choice = getInput.nextInt();
+    boolean result;
     switch (choice) {
       case 1:
-        currentInstance.systemInvoke("java Server");
+        System.out.print("Do You Want To Use Default Port?\n---");
+        result = currentInstance.askUserYN();
+        if (result) {
+          System.out.print("Enter Port Number: ");
+          int portNumber = getInput.nextInt();
+          currentInstance.systemInvoke("java Server " + portNumber);
+        } else {
+          currentInstance.systemInvoke("java Server 5000");
+        }
         break;
       case 2:
-        currentInstance.systemInvoke("java Client");
+        System.out.print("Do You Want To Use Default Port & IP Address?\n---");
+        result = currentInstance.askUserYN();
+        if (result) {
+
+          System.out.print("Enter IP Address: ");
+          String ipAddress = getInput.next();
+
+          System.out.print("Enter Port Number: ");
+          int portNumber = getInput.nextInt();
+
+          currentInstance.systemInvoke("java Client " + ipAddress + " " + portNumber);
+        } else {
+          currentInstance.systemInvoke("java Client localhost 5000");
+        }
         break;
       default:
         System.out.println(colorConsole.RED + "Error: Invalid Option" + colorConsole.RESET);
