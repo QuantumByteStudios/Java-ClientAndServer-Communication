@@ -1,3 +1,6 @@
+<p align="center">
+  <img width="300" height="300" align="center" src="Images/icon.png" alt="Icon">
+</p>
 <h1 align="center">Java-ClientAndServer-Communication</h1>
 <p align="center">A simple Java Sockets-based console application for sending messages from the client to the server.</p>
 
