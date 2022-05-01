@@ -13,5 +13,8 @@ Execute :  `main.java`
 
 <h2>Runtime Screenshot:</h2>
 <p align="cneter">
+  <img src="Images/MainRuntimeScreenshot.png" alt="MainRuntumeScreentshot">
+</p>
+<p align="cneter">
   <img src="Images/RuntimeScreenshot.png" alt="RuntumeScreentshot">
 </p>
