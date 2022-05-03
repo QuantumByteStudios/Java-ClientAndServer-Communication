@@ -80,7 +80,7 @@ public class Server {
   public static void main(String args[]) {
 
     // Gets Port Number Form Argument
-    portNumber = Integer.parseInt(args[0]);
+    int portNumber = Integer.parseInt(args[0]);
 
     // Creating Basic Objects
     utilities serverInstance = new utilities();

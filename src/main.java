@@ -50,7 +50,7 @@ public class main {
     boolean result;
     switch (choice) {
       case 1:
-        System.out.print("Do You Want To Use Default Port?\n---");
+        System.out.print("Do You Want To Use Custom Port?\n---");
         result = currentInstance.askUserYN();
         if (result) {
           System.out.print("Enter Port Number: ");
@@ -61,7 +61,7 @@ public class main {
         }
         break;
       case 2:
-        System.out.print("Do You Want To Use Default Port & IP Address?\n---");
+        System.out.print("Do You Want To Use Custom Port & IP Address?\n---");
         result = currentInstance.askUserYN();
         if (result) {
 

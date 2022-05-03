@@ -5,8 +5,9 @@ import java.util.*;
 public class Client {
   // initialize socket and input output streams
   private Socket socket = null;
-  private DataInputStream input = null;
   private DataOutputStream out = null;
+  private InputStreamReader r = new InputStreamReader(System.in);
+  private BufferedReader br = new BufferedReader(r);
 
   // constructor to put ip address and port
   public Client(String address, int port) {
@@ -21,9 +22,6 @@ public class Client {
           .delayTextEffect(
               clientConsoleColors.GREEN + "Connected IP: " + address + "Port: " + port + clientConsoleColors.RESET
                   + "\n");
-
-      // takes input from terminal
-      input = new DataInputStream(System.in);
 
       // sends output to the socket
       out = new DataOutputStream(socket.getOutputStream());
@@ -40,16 +38,18 @@ public class Client {
     while (!line.equals("/exit")) {
       try {
         System.out.print("Enter Message: ");
-        line = input.readLine();
+        line = br.readLine();
         out.writeUTF(line);
-      } catch (IOException i) {
-        System.out.println(i);
+      } catch (IOException e) {
+        System.out.println(e.getMessage());
+      } catch (NullPointerException i) {
+        System.out.println(i.getMessage());
       }
     }
 
     // close the connection
     try {
-      input.close();
+      br.close();
       out.close();
       socket.close();
     } catch (IOException i) {
