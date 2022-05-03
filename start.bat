@@ -1,3 +1,3 @@
 @echo off
 echo.
-java main
+java -jar main.jar
