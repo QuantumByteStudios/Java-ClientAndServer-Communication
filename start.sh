@@ -1,1 +1,1 @@
-java -jar main.jar
+java -jar linux-JAR.jar
