@@ -26,9 +26,13 @@ public class Client {
       // sends output to the socket
       out = new DataOutputStream(socket.getOutputStream());
     } catch (UnknownHostException u) {
-      System.out.println(u);
+      // System.out.println(u);
+      System.out.println(ConsoleColors.RED + "NO SERVER FOUND!" + ConsoleColors.RESET);
+      System.exit(0);
     } catch (IOException i) {
-      System.out.println(i);
+      // System.out.println(i);
+      System.out.println(ConsoleColors.RED + "NO SERVER FOUND!" + ConsoleColors.RESET);
+      System.exit(0);
     }
 
     // string to read message from input

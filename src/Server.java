@@ -19,12 +19,14 @@ public class Server {
     // starts server and waits for a connection
     try {
 
+      // Create Object For Console Colors
       ConsoleColors currentConsole = new ConsoleColors();
 
+      // Creates a server socket to the specified port
       server = new ServerSocket(port);
+
       serverBeautification.delayTextEffect(
           currentConsole.YELLOW + "Server started at Port: " + port + currentConsole.RESET + "\n");
-
       serverBeautification
           .delayTextEffect(currentConsole.YELLOW + "Waiting for client..." + currentConsole.RESET + "\n");
 
@@ -32,12 +34,12 @@ public class Server {
       serverBeautification.delayTextEffect(currentConsole.GREEN + "Client Connected.." + currentConsole.RESET + "\n");
 
       // takes input from the client socket
-      in = new DataInputStream(
-          new BufferedInputStream(socket.getInputStream()));
+      // socket.getInputStream() - Returns an input stream for this socket.
+      in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
 
       String line = "";
 
-      // reads message from client until "Over" is sent
+      // reads message from client until "/exit" is sent
       while (!line.equals("/exit")) {
         try {
           line = in.readUTF();
@@ -48,12 +50,15 @@ public class Server {
           // Check For System Invokes
           utilities serverInstance = new utilities();
           switch (line) {
-            case "/system dir":
+            case "/sys dir":
               serverInstance.systemInvoke("dir");
+              break;
+            case "/sys clear":
+              serverInstance.systemInvoke("cls");
               break;
           }
 
-          // Write to logs
+          // Write data to logs
           DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
           LocalDateTime now = LocalDateTime.now();
           try {
@@ -61,6 +66,7 @@ public class Server {
             out.println(dtf.format(now) + "    " + line);
             out.close();
           } catch (IOException e) {
+            // No Exception Message
           }
 
         } catch (IOException i) {

@@ -7,7 +7,7 @@ import javax.swing.text.Utilities;
 
 // Main Class
 public class main {
-  public static void main(String[] args) {
+  public static void main(String args[]) {
 
     // Creating Basic Objects
     utilities currentInstance = new utilities();
@@ -23,8 +23,7 @@ public class main {
     // Main Variables
     String userName;
 
-    // System.out.println("Java Console Chat App"); //Basic
-    // systemUtilities.sleep(500);
+    // Actual Start
     beautyElement
         .delayTextEffect(
             "Welcome to " + colorConsole.RED + "Java-ClientAndServer-Communication\n" + colorConsole.RESET);
@@ -34,6 +33,7 @@ public class main {
 
     ConsoleColors.RESETSCREEN();
 
+    // Get Date And Time (System)
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
     LocalDateTime now = LocalDateTime.now();
 
@@ -42,6 +42,7 @@ public class main {
       out.println(dtf.format(now) + " Login: " + userName);
       out.close();
     } catch (IOException e) {
+      // No Exception Message
     }
 
     System.out.print("\nHey, " + colorConsole.RED + userName + colorConsole.RESET
